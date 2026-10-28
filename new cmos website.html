@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C MOS Computers & Technologies | Catalog</title>
-    <!-- Tailwind CSS CDN -->
+    <title>C MOS Computers & Technologies | Product & CCTV Catalog</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,13 +18,12 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            900: '#0c4a6e',
+                        cmos: {
+                            50: '#fffbe6',
+                            400: '#f59e0b',
+                            500: '#d97706',
+                            600: '#b45309',
+                            cyan: '#06b6d4',
                         }
                     }
                 }
@@ -47,153 +46,187 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
 
-    <!-- Top Navigation Header -->
-    <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+    <!-- Top Contact & Branch Banner -->
+    <div class="bg-gradient-to-r from-amber-600 via-amber-700 to-slate-900 text-slate-100 px-4 py-2 text-xs border-b border-amber-500/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-2 font-medium">
+                <i class="fa-solid fa-location-dot text-amber-300"></i>
+                <span>New Bus Stand, Anuradhapura</span>
+                <span class="hidden md:inline text-amber-300/60">|</span>
+                <span class="hidden md:inline text-amber-200">Authorized CCTV & Computer Solutions</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:0703182015" class="hover:text-amber-200 font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-amber-300"></i> 070 318 2015
+                </a>
+                <span class="text-slate-500">/</span>
+                <a href="tel:0252228715" class="hover:text-amber-200 font-semibold hidden sm:inline">025 222 8715</a>
+                <span class="text-slate-500 hidden sm:inline">/</span>
+                <a href="tel:0713182015" class="hover:text-amber-200 font-semibold hidden sm:inline">071 318 2015</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
-            <!-- Logo & Store Title -->
+            <!-- Logo & Store Name -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="resetFilters()">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20">
-                    <i class="fa-solid fa-microchip text-xl"></i>
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+                    <i class="fa-solid fa-microchip"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold bg-gradient-to-r from-white via-slate-100 to-sky-400 bg-clip-text text-transparent leading-none">
-                        C MOS
+                    <h1 class="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-amber-400 via-white to-cyan-400 bg-clip-text text-transparent leading-none">
+                        C MOS COMPUTERS
                     </h1>
-                    <p class="text-xs text-sky-400 font-medium tracking-wide mt-0.5">Computers & Technologies</p>
+                    <p class="text-[11px] text-slate-400 font-medium tracking-wide mt-1">
+                        & TECHNOLOGIES <span class="text-amber-400 font-bold ml-1">• ANURADHAPURA</span>
+                    </p>
                 </div>
             </div>
 
-            <!-- Real-Time Search Bar -->
-            <div class="flex-1 max-w-md hidden md:block">
+            <!-- Global Live Search -->
+            <div class="flex-1 max-w-md hidden lg:block">
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                    <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search name, model, brand, or specs..." 
-                        class="w-full pl-10 pr-4 py-2 bg-slate-800/90 border border-slate-700/80 rounded-xl text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm transition-all">
+                    <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search Dahua, Hikvision, SSDs, Laptops, 4G Routers..." 
+                        class="w-full pl-10 pr-4 py-2 bg-slate-950 border border-slate-700/80 rounded-xl text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm transition-all">
                 </div>
             </div>
 
-            <!-- Header Action Controls -->
+            <!-- Action Controls -->
             <div class="flex items-center space-x-2 sm:space-x-3">
-                <!-- Mode Toggle (Customer vs Wholesale Admin View) -->
-                <button onclick="toggleMode()" id="modeToggleBtn" title="Toggle Wholesale Admin View"
-                    class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-medium border border-slate-700 flex items-center space-x-2 transition">
-                    <i id="modeIcon" class="fa-solid fa-eye text-sky-400"></i>
-                    <span id="modeLabel" class="hidden sm:inline">Admin Mode</span>
+                <!-- Sync Status / Firebase Settings Indicator -->
+                <button onclick="openFirebaseSettingsModal()" id="dbStatusBadge" title="Cloud Sync Settings"
+                    class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 text-xs font-semibold flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-cloud text-xs"></i>
+                    <span id="syncModeText" class="hidden sm:inline">Local Storage</span>
                 </button>
 
-                <!-- Add New Product Button -->
-                <button onclick="openProductModal()" 
-                    class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs sm:text-sm shadow-md shadow-sky-600/30 flex items-center space-x-2 transition">
-                    <i class="fa-solid fa-plus"></i>
-                    <span class="hidden sm:inline">Add Product</span>
+                <!-- Customer / Wholesale View Mode Toggle -->
+                <button onclick="toggleViewMode()" id="viewModeBtn" title="Toggle Wholesale / Customer View"
+                    class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-shield-halved text-amber-400" id="viewModeIcon"></i>
+                    <span id="viewModeLabel" class="hidden sm:inline">Admin View</span>
+                </button>
+
+                <!-- Add New Product Button (Admin Only or Default Visible) -->
+                <button onclick="openProductModal()" id="addProductBtn"
+                    class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-md shadow-amber-500/20 flex items-center space-x-1.5 transition">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span>Add Item</span>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Search Bar -->
-        <div class="p-3 bg-slate-900 border-t border-slate-800 md:hidden">
+        <!-- Mobile Search Input -->
+        <div class="p-3 bg-slate-900 border-t border-slate-800 lg:hidden">
             <div class="relative">
                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" oninput="handleSearch(this.value)" placeholder="Search products..." 
-                    class="w-full pl-9 pr-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-400 text-sm">
+                <input type="text" oninput="handleSearch(this.value)" placeholder="Search products, models, prices..." 
+                    class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-200 placeholder-slate-400 text-sm">
             </div>
         </div>
     </header>
 
-    <!-- Main Content Layout -->
+    <!-- App Layout Body -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
 
         <!-- Sidebar Category Navigation -->
         <aside class="w-full md:w-64 flex-shrink-0 space-y-5">
 
-            <!-- CCTV Brands Category Box -->
-            <div class="bg-slate-900/80 rounded-2xl p-4 border border-slate-800 shadow-lg">
-                <div class="flex items-center space-x-2 mb-3 px-1 text-sky-400">
-                    <i class="fa-solid fa-video text-sm"></i>
-                    <h2 class="text-xs font-extrabold uppercase tracking-wider">CCTV Brands</h2>
+            <!-- CCTV Security Brands Card -->
+            <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 shadow-xl">
+                <div class="flex items-center space-x-2 mb-3 px-1 text-amber-400">
+                    <i class="fa-solid fa-video"></i>
+                    <h2 class="text-xs font-extrabold uppercase tracking-wider">CCTV Cameras & Brands</h2>
                 </div>
                 <div class="space-y-1" id="cctvBrandFilters">
-                    <!-- CCTV Brands injected via JS -->
+                    <!-- CCTV Brand filters injected dynamically -->
                 </div>
             </div>
 
-            <!-- Computer Hardware & Tech Categories -->
-            <div class="bg-slate-900/80 rounded-2xl p-4 border border-slate-800 shadow-lg">
-                <div class="flex items-center space-x-2 mb-3 px-1 text-indigo-400">
-                    <i class="fa-solid fa-layer-group text-sm"></i>
-                    <h2 class="text-xs font-extrabold uppercase tracking-wider">Categories</h2>
+            <!-- Computer Hardware & Accessories Card -->
+            <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 shadow-xl">
+                <div class="flex items-center space-x-2 mb-3 px-1 text-cyan-400">
+                    <i class="fa-solid fa-desktop"></i>
+                    <h2 class="text-xs font-extrabold uppercase tracking-wider">Computer Hardware</h2>
                 </div>
                 <div class="space-y-1" id="generalCatFilters">
-                    <!-- General Categories injected via JS -->
+                    <!-- General Category filters injected dynamically -->
                 </div>
             </div>
 
-            <!-- Stats Summary -->
-            <div class="bg-gradient-to-br from-slate-900 to-slate-800/80 rounded-2xl p-4 border border-slate-800 text-xs text-slate-400 space-y-2">
-                <div class="flex justify-between items-center">
-                    <span>Total Products:</span>
-                    <span id="statTotalItems" class="font-bold text-slate-100 text-sm">0</span>
+            <!-- Branch Contact Quick-Card -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-900/80 rounded-2xl p-4 border border-slate-800 text-xs space-y-2 text-slate-300">
+                <div class="font-bold text-amber-400 flex items-center space-x-1.5">
+                    <i class="fa-solid fa-store"></i>
+                    <span>C MOS Store Details</span>
                 </div>
-                <div class="flex justify-between items-center">
-                    <span>Active Filter:</span>
-                    <span id="statActiveCat" class="font-bold text-sky-400">All</span>
+                <p class="text-[11px] text-slate-400 leading-relaxed">Visit our store at New Bus Stand, Anuradhapura for retail, wholesale & technician discounts.</p>
+                <div class="pt-2 border-t border-slate-800 text-[11px] space-y-1 font-mono text-slate-300">
+                    <div><i class="fa-brands fa-whatsapp text-emerald-400 w-4"></i> 070 318 2015</div>
+                    <div><i class="fa-solid fa-phone text-sky-400 w-4"></i> 025 222 8715</div>
                 </div>
             </div>
         </aside>
 
-        <!-- Product Display Area -->
+        <!-- Product Inventory Content Area -->
         <section class="flex-1 flex flex-col space-y-4">
 
-            <!-- Top Filter Header -->
-            <div class="bg-slate-900/60 rounded-2xl p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <!-- Control Bar & Filter Breadcrumb -->
+            <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex flex-wrap items-center justify-between gap-3 shadow-md">
                 <div>
-                    <h2 id="currentCategoryTitle" class="text-lg font-bold text-white flex items-center space-x-2">
-                        <span>All Products</span>
+                    <h2 id="currentCategoryTitle" class="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
+                        <span>All Inventory</span>
                     </h2>
-                    <p id="productCountSub" class="text-xs text-slate-400">Showing all items in store</p>
+                    <p id="productCountSub" class="text-xs text-slate-400">Loading catalog items...</p>
                 </div>
 
-                <!-- Controls: Sort & Stock Filter -->
-                <div class="flex flex-wrap items-center gap-2">
-                    <select id="stockFilterSelect" onchange="handleStockFilter(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-sky-500">
-                        <option value="all">All Availability</option>
-                        <option value="in-stock">In Stock Only</option>
-                        <option value="out-of-stock">Out of Stock</option>
-                    </select>
-
-                    <select id="sortSelect" onchange="handleSort(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-sky-500">
-                        <option value="default">Featured</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="warranty">Warranty Duration</option>
-                    </select>
+                <div class="flex items-center space-x-3">
+                    <!-- Sort Selection -->
+                    <div class="flex items-center space-x-2">
+                        <label class="text-xs text-slate-400 hidden sm:inline">Sort:</label>
+                        <select id="sortSelect" onchange="handleSort(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:ring-1 focus:ring-amber-500">
+                            <option value="default">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="warranty">Warranty Period</option>
+                            <option value="stock">In Stock First</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- Product Grid -->
+            <!-- Product Cards Grid -->
             <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Cards injected dynamically -->
+                <!-- Products dynamically rendered here -->
             </div>
 
-            <!-- Empty State Container -->
-            <div id="emptyState" class="hidden flex-col items-center justify-center py-16 px-4 bg-slate-900/40 rounded-2xl border border-dashed border-slate-800 text-center">
+            <!-- Empty Search Results State -->
+            <div id="emptyState" class="hidden flex-col items-center justify-center py-16 px-4 bg-slate-900/50 rounded-2xl border border-dashed border-slate-800 text-center">
                 <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center text-slate-500 mb-3 text-2xl">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
-                <h3 class="text-base font-semibold text-slate-200">No matching items found</h3>
-                <p class="text-xs text-slate-400 max-w-xs mt-1">Try clearing your search query or selecting a different category.</p>
-                <button onclick="resetFilters()" class="mt-4 px-4 py-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-200 border border-slate-700">Reset Filters</button>
+                <h3 class="text-base font-semibold text-slate-200">No matching products found</h3>
+                <p class="text-xs text-slate-400 max-w-xs mt-1">Try clearing your search terms or choosing a different CCTV brand/category.</p>
+                <button onclick="resetFilters()" class="mt-4 px-4 py-2 text-xs bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-amber-400 font-semibold transition">
+                    Reset Filters
+                </button>
             </div>
         </section>
+
     </main>
 
-    <!-- Modal Form (Add / Edit Product) -->
+    <!-- Product Add/Edit Modal Form -->
     <div id="productModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl transform transition-all">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
             
-            <div class="bg-slate-800/80 px-6 py-4 border-b border-slate-800 flex justify-between items-center">
-                <h3 id="modalTitle" class="text-base font-bold text-white">Add New Product</h3>
+            <div class="bg-slate-800/90 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-base font-bold text-amber-400 flex items-center gap-2">
+                    <i class="fa-solid fa-box"></i> <span>Add New Inventory Item</span>
+                </h3>
                 <button onclick="closeProductModal()" class="text-slate-400 hover:text-white text-lg">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -204,32 +237,33 @@
 
                 <!-- Title -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Product Name *</label>
-                    <input type="text" id="prodTitle" required placeholder="e.g. Dahua 2MP HD Bullet Camera" 
-                        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Product Title *</label>
+                    <input type="text" id="prodTitle" required placeholder="e.g. Dahua 2MP Full-Color Bullet Camera" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                 </div>
 
-                <!-- Category & CCTV Brand -->
+                <!-- Main Category & CCTV Brand -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">Category *</label>
                         <select id="prodCategory" required onchange="handleModalCategoryChange(this.value)" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                            <option value="CCTV">CCTV Security</option>
-                            <option value="Laptops & PCs">Laptops & PCs</option>
-                            <option value="Monitors">Monitors</option>
-                            <option value="Storage & SSD">Storage & SSD</option>
-                            <option value="Networking / 4G SIM">Networking / 4G SIM</option>
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="CCTV Security">CCTV Security</option>
+                            <option value="Laptops & Desktops">Laptops & Desktops</option>
+                            <option value="Monitors">Monitors (19" - 27")</option>
+                            <option value="Storage & SSDs">Storage & SSDs</option>
+                            <option value="Networking & 4G">Networking & 4G SIM</option>
                             <option value="Power & UPS">Power & UPS</option>
-                            <option value="Accessories">Accessories</option>
-                            <option value="Repair & Services">Repair & Services</option>
+                            <option value="Peripherals">Peripherals & Gaming</option>
+                            <option value="CCTV Accessories">CCTV Accessories</option>
+                            <option value="Services & Repair">Services & Repair</option>
                         </select>
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">CCTV Brand</label>
                         <select id="prodCctvBrand" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                             <option value="None">None (N/A)</option>
                             <option value="Dahua">Dahua</option>
                             <option value="Hikvision">Hikvision</option>
@@ -241,241 +275,329 @@
                     </div>
                 </div>
 
-                <!-- Pricing & Margin -->
+                <!-- Retail & Wholesale Prices (LKR) -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1">Retail Price (LKR) *</label>
-                        <input type="number" step="1" id="prodRetailPrice" required placeholder="8500" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <input type="number" step="0.01" id="prodRetailPrice" required placeholder="8500.00" 
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Wholesale Cost (LKR) *</label>
-                        <input type="number" step="1" id="prodWholesalePrice" required placeholder="6500" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Wholesale Price (LKR) *</label>
+                        <input type="number" step="0.01" id="prodWholesalePrice" required placeholder="7200.00" 
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                     </div>
                 </div>
 
-                <!-- Warranty, Model & Availability -->
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="col-span-1">
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Warranty *</label>
+                <!-- Warranty & Stock Status -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Warranty Period *</label>
                         <select id="prodWarranty" required
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                             <option value="No Warranty">No Warranty</option>
                             <option value="6 Months">6 Months</option>
                             <option value="1 Year">1 Year</option>
                             <option value="2 Years">2 Years</option>
                             <option value="3 Years">3 Years</option>
-                            <option value="5 Years">5 Years</option>
                         </select>
                     </div>
-                    <div class="col-span-1">
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Model / Code</label>
-                        <input type="text" id="prodModel" placeholder="DH-HAC-1200" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                    </div>
-                    <div class="col-span-1">
-                        <label class="block text-xs font-semibold text-slate-300 mb-1">Stock Status</label>
-                        <select id="prodInStock" 
-                            class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                            <option value="true">In Stock</option>
-                            <option value="false">Out of Stock</option>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Stock Availability *</label>
+                        <select id="prodStock" required
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <option value="In Stock">In Stock</option>
+                            <option value="Limited Stock">Limited Stock</option>
+                            <option value="Out of Stock">Out of Stock</option>
                         </select>
                     </div>
+                </div>
+
+                <!-- Model Number / Part Code -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Model / Part Code</label>
+                    <input type="text" id="prodModel" placeholder="e.g. DH-HAC-HDW1239TLP" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                 </div>
 
                 <!-- Image URL -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1">Image URL (Optional)</label>
-                    <input type="url" id="prodImage" placeholder="https://..." 
-                        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <input type="url" id="prodImage" placeholder="https://images.unsplash.com/..." 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500">
                 </div>
 
-                <!-- Specs / Description -->
+                <!-- Specs / Key Notes -->
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Key Specs / Description</label>
-                    <textarea id="prodDesc" rows="2" placeholder="Key specifications, features..." 
-                        class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Key Specifications / Specs</label>
+                    <textarea id="prodDesc" rows="2" placeholder="24/7 Full Color, 3.6mm Lens, Built-in Mic..." 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
                 </div>
 
-                <!-- Form Buttons -->
-                <div class="pt-2 flex justify-end space-x-3">
+                <!-- Form Action Buttons -->
+                <div class="pt-3 flex justify-end space-x-3 border-t border-slate-800">
                     <button type="button" onclick="closeProductModal()" 
                         class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700">Cancel</button>
                     <button type="submit" 
-                        class="px-5 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold shadow-md shadow-sky-600/30">Save Product</button>
+                        class="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20">Save Product</button>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Firebase Settings / Cloud Config Modal -->
+    <div id="firebaseSettingsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+            <div class="bg-slate-800/90 px-6 py-4 border-b border-slate-700 flex justify-between items-center">
+                <h3 class="text-base font-bold text-amber-400 flex items-center gap-2">
+                    <i class="fa-solid fa-cloud"></i> <span>Firebase Cloud Setup</span>
+                </h3>
+                <button onclick="closeFirebaseSettingsModal()" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Paste your **Firebase Project Web Config** credentials below to enable live, real-time inventory and pricing synchronization across all shop devices and phones.
+                </p>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Firebase API Key</label>
+                    <input type="text" id="fbApiKey" placeholder="AIzaSy..." 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-amber-500">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Auth Domain</label>
+                        <input type="text" id="fbAuthDomain" placeholder="myproject.firebaseapp.com" 
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Project ID</label>
+                        <input type="text" id="fbProjectId" placeholder="myproject-id" 
+                            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    </div>
+                </div>
+
+                <div class="pt-2 flex flex-col space-y-2">
+                    <button onclick="saveFirebaseConfig()" 
+                        class="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20">
+                        Connect & Enable Cloud Sync
+                    </button>
+                    <button onclick="resetFirebaseConfig()" 
+                        class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 text-xs font-medium">
+                        Use Local Storage Mode Only
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Confirm Delete Modal -->
     <div id="confirmModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl">
             <div class="w-12 h-12 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mx-auto text-xl">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i class="fa-solid fa-trash-can"></i>
             </div>
-            <h3 class="text-base font-bold text-slate-100">Delete Product</h3>
-            <p class="text-xs text-slate-400">Are you sure you want to remove this item from your inventory catalog?</p>
+            <h3 class="text-base font-bold text-slate-100">Delete Product?</h3>
+            <p class="text-xs text-slate-400">Are you sure you want to delete this product from the inventory?</p>
             <div class="flex justify-center space-x-3 pt-2">
-                <button onclick="closeConfirmModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700">Cancel</button>
+                <button onclick="closeConfirmModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">Cancel</button>
                 <button id="confirmDeleteBtn" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold shadow-md shadow-red-600/30">Delete</button>
             </div>
         </div>
     </div>
 
-    <!-- Copy Toast Notification -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-sky-600 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-lg hidden flex items-center space-x-2 transition-all">
-        <i class="fa-solid fa-check"></i>
-        <span id="toastMsg">Product details copied to clipboard!</span>
-    </div>
+    <!-- Firebase SDK Imports (v11 Modular standard via script) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // Expose Firebase modules globally for fallback/dynamic configuration
+        window.FirebaseModule = {
+            initializeApp,
+            getAuth,
+            signInAnonymously,
+            signInWithCustomToken,
+            getFirestore,
+            collection,
+            onSnapshot,
+            doc,
+            setDoc,
+            deleteDoc
+        };
+
+        // Auto-Initialize if env variables exist
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+            try {
+                window.initFirebaseSystem(JSON.parse(__firebase_config));
+            } catch(e) {
+                console.warn('Firebase config error:', e);
+            }
+        }
+    </script>
+
+    <!-- Core Store Logic Script -->
     <script>
-        const STORAGE_KEY = 'cmos_tech_inventory_v2';
+        // Store Key for LocalStorage Fallback
+        const STORAGE_KEY = 'cmos_computers_inventory_v2';
+        const FB_CONFIG_KEY = 'cmos_firebase_config';
 
-        // Pre-loaded realistic sample products
+        // Initial Sample Products for C MOS Computers
         const initialProducts = [
             {
                 id: '1',
-                title: 'Dahua 2MP Full-Color Night Vision HD Dome Camera',
-                category: 'CCTV',
+                title: 'Dahua 2MP Full-Color HDCVI Dome Camera',
+                category: 'CCTV Security',
                 cctvBrand: 'Dahua',
-                retailPrice: 8500,
-                wholesalePrice: 6200,
+                retailPrice: 8500.00,
+                wholesalePrice: 6800.00,
                 warranty: '2 Years',
+                stock: 'In Stock',
                 model: 'DH-HAC-HDW1239TLP-A-LED',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=500&q=80',
-                desc: '24/7 Full Color imaging, built-in microphone for audio, 2.8mm fixed lens, IP67 rating.'
+                desc: '24/7 Full Color imaging, 3.6mm Fixed Lens, Built-in Microphone, IP67 Weatherproof rating.'
             },
             {
                 id: '2',
-                title: 'Hikvision 4MP AcuSense AI Bullet IP Camera',
-                category: 'CCTV',
+                title: 'Hikvision 4MP AcuSense Fixed Bullet IP Camera',
+                category: 'CCTV Security',
                 cctvBrand: 'Hikvision',
-                retailPrice: 18500,
-                wholesalePrice: 14200,
+                retailPrice: 22500.00,
+                wholesalePrice: 18200.00,
                 warranty: '2 Years',
+                stock: 'In Stock',
                 model: 'DS-2CD2043G2-I',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80',
-                desc: 'Deep learning AI human and vehicle detection, H.265+ encoding, EXIR 2.0 night vision.'
+                desc: 'Human & Vehicle target classification based on deep learning algorithm, H.265+ smart codec.'
             },
             {
                 id: '3',
-                title: 'Ezviz C6N 1080p Smart Wi-Fi Pan/Tilt Security Cam',
-                category: 'CCTV',
+                title: 'Ezviz C6N 1080p Smart Wi-Fi Pan & Tilt Camera',
+                category: 'CCTV Security',
                 cctvBrand: 'Ezviz',
-                retailPrice: 9200,
-                wholesalePrice: 7100,
+                retailPrice: 11500.00,
+                wholesalePrice: 8900.00,
                 warranty: '1 Year',
+                stock: 'In Stock',
                 model: 'CS-C6N-A0-1C2WFR',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80',
-                desc: '360-degree rotation coverage, motion tracking, two-way audio communication.'
+                desc: '360-Degree Panoramic View, Motion Tracking, Auto Smart Night Vision, 2-Way Talk Audio.'
             },
             {
                 id: '4',
-                title: 'Tiandy 5MP Starlight Audio IR Turret Camera',
-                category: 'CCTV',
+                title: 'Tiandy 5MP Starlight IR Metal Turret IP Cam',
+                category: 'CCTV Security',
                 cctvBrand: 'Tiandy',
-                retailPrice: 12500,
-                wholesalePrice: 9300,
+                retailPrice: 14800.00,
+                wholesalePrice: 11400.00,
                 warranty: '3 Years',
+                stock: 'In Stock',
                 model: 'TC-C35WS',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=500&q=80',
-                desc: 'Starlight low-light clarity, PoE power support, metallic vandal-resistant casing.'
+                desc: 'Starlight low-light performance, PoE integrated power, Heavy duty metal housing.'
             },
             {
                 id: '5',
                 title: 'Imou Cruiser 2 5MP Outdoor Wi-Fi PTZ Camera',
-                category: 'CCTV',
+                category: 'CCTV Security',
                 cctvBrand: 'Imou',
-                retailPrice: 19800,
-                wholesalePrice: 15400,
+                retailPrice: 19500.00,
+                wholesalePrice: 15600.00,
                 warranty: '1 Year',
+                stock: 'In Stock',
                 model: 'IPC-GS7EP-5M0WE',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=500&q=80',
-                desc: '5MP QHD video resolution, active deterrent spotlight & alarm, weather resistant.'
+                desc: '5MP 3K Resolution, AI Human & Vehicle Detection, Active Siren & Spotlight Deterrent.'
             },
             {
                 id: '6',
-                title: 'Chinese CCTV 1080p Solar Powered 4G Wireless Cam',
-                category: 'CCTV',
+                title: 'Chinese CCTV 1080p Solar Dual-Lens 4G SIM Cam',
+                category: 'CCTV Security',
                 cctvBrand: 'Chinese CCTV',
-                retailPrice: 14500,
-                wholesalePrice: 9800,
+                retailPrice: 13500.00,
+                wholesalePrice: 9800.00,
                 warranty: '6 Months',
+                stock: 'Limited Stock',
                 model: 'OEM-SOLAR-4G-V2',
-                inStock: false,
                 image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80',
-                desc: 'Solar panel charging, SIM card 4G LTE connection, pir motion detection, unbranded.'
+                desc: 'Dual screen solar powered outdoor 4G SIM camera, pir sensor motion alarm.'
             },
             {
                 id: '7',
-                title: 'Samsung 24" IPS 75Hz Borderless Eye-Care Monitor',
-                category: 'Monitors',
+                title: 'Lexar 512GB NVMe M.2 PCIe Gen3 SSD',
+                category: 'Storage & SSDs',
                 cctvBrand: 'None',
-                retailPrice: 42000,
-                wholesalePrice: 34500,
+                retailPrice: 12800.00,
+                wholesalePrice: 10400.00,
                 warranty: '3 Years',
-                model: 'LF24T350FHW',
-                inStock: true,
-                image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80',
-                desc: 'Full HD 1080p resolution, AMD FreeSync, slim bezel design, HDMI & VGA inputs.'
+                stock: 'In Stock',
+                model: 'LNM620X512G-RNNNG',
+                image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80',
+                desc: 'High speed read up to 3300MB/s, fast boot drive for laptops, PCs and DVR system.'
             },
             {
                 id: '8',
-                title: 'Kingston NV2 1TB Gen 4.0 NVMe M.2 SSD',
-                category: 'Storage & SSD',
+                title: 'TP-Link 300Mbps Wireless N 4G LTE Router',
+                category: 'Networking & 4G',
                 cctvBrand: 'None',
-                retailPrice: 22500,
-                wholesalePrice: 18200,
-                warranty: '3 Years',
-                model: 'SNV2S/1000G',
-                inStock: true,
-                image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80',
-                desc: 'Read speeds up to 3500MB/s. Great for PC upgrades and CCTV DVR storage.'
-            },
-            {
-                id: '9',
-                title: 'TP-Link 4G LTE Wi-Fi N300 Router with SIM Slot',
-                category: 'Networking / 4G SIM',
-                cctvBrand: 'None',
-                retailPrice: 16500,
-                wholesalePrice: 12800,
-                warranty: '2 Years',
+                retailPrice: 14500.00,
+                wholesalePrice: 11900.00,
+                warranty: '1 Year',
+                stock: 'In Stock',
                 model: 'TL-MR6400',
-                inStock: true,
                 image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=500&q=80',
-                desc: 'Plug and play 4G SIM connection. Ideal for remote CCTV location streaming.'
+                desc: 'Plug and play 4G SIM router, ideal for remote CCTV monitoring setups.'
             }
         ];
 
-        // State Management
+        // Global Application State
         let products = [];
         let currentFilter = { type: 'all', value: 'all' };
         let searchQuery = '';
         let currentSort = 'default';
-        let stockFilter = 'all';
-        let isWholesaleMode = true; // Admin view (shows cost & margins)
+        let isAdminView = true; // Admin/Wholesale View by Default
+        let firebaseApp = null;
+        let firestoreDb = null;
+        let firebaseUnsubscribe = null;
         let pendingDeleteId = null;
 
         const cctvBrands = ['Dahua', 'Hikvision', 'Ezviz', 'Tiandy', 'Imou', 'Chinese CCTV'];
         const generalCategories = [
-            'Laptops & PCs', 'Monitors', 'Storage & SSD', 
-            'Networking / 4G SIM', 'Power & UPS', 'Accessories', 'Repair & Services'
+            'Laptops & Desktops', 
+            'Monitors', 
+            'Storage & SSDs', 
+            'Networking & 4G', 
+            'Power & UPS', 
+            'Peripherals', 
+            'CCTV Accessories', 
+            'Services & Repair'
         ];
 
+        // On Page Load Initialization
         window.onload = function() {
-            loadProducts();
+            // Check for saved custom Firebase config
+            const savedFb = localStorage.getItem(FB_CONFIG_KEY);
+            if (savedFb) {
+                try {
+                    window.initFirebaseSystem(JSON.parse(savedFb));
+                } catch(e) {
+                    initLocalStorage();
+                }
+            } else {
+                initLocalStorage();
+            }
+
             renderSidebar();
             renderProducts();
         };
 
-        function loadProducts() {
+        // Initialize Local Storage Fallback
+        function initLocalStorage() {
             const stored = localStorage.getItem(STORAGE_KEY);
             if (stored) {
                 try {
@@ -485,54 +607,122 @@
                 }
             } else {
                 products = initialProducts;
-                saveToStorage();
+                saveToLocalStorage();
             }
+            updateSyncBadge('Local Mode', false);
+            renderProducts();
         }
 
-        function saveToStorage() {
+        function saveToLocalStorage() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
         }
 
-        // Toggle Admin / Customer Display View
-        function toggleMode() {
-            isWholesaleMode = !isWholesaleMode;
-            const btn = document.getElementById('modeToggleBtn');
-            const label = document.getElementById('modeLabel');
-            const icon = document.getElementById('modeIcon');
+        // Initialize Firebase Cloud Database System
+        window.initFirebaseSystem = async function(config) {
+            if (!window.FirebaseModule) return;
+            try {
+                const { initializeApp, getFirestore, collection, onSnapshot, getAuth, signInAnonymously, signInWithCustomToken } = window.FirebaseModule;
+                
+                firebaseApp = initializeApp(config);
+                firestoreDb = getFirestore(firebaseApp);
+                const auth = getAuth(firebaseApp);
 
-            if (isWholesaleMode) {
-                btn.classList.remove('bg-emerald-950/60', 'border-emerald-600', 'text-emerald-400');
-                btn.classList.add('bg-slate-800', 'border-slate-700', 'text-slate-200');
-                icon.className = 'fa-solid fa-eye text-sky-400';
-                label.innerText = 'Admin Mode';
+                // Authenticate
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'cmos-computers-app';
+                const colRef = collection(firestoreDb, 'artifacts', appId, 'public', 'data', 'products');
+
+                // Realtime Snapshot Listener
+                if (firebaseUnsubscribe) firebaseUnsubscribe();
+                firebaseUnsubscribe = onSnapshot(colRef, (snapshot) => {
+                    const fetched = [];
+                    snapshot.forEach(doc => {
+                        fetched.push({ id: doc.id, ...doc.data() });
+                    });
+
+                    if (fetched.length > 0) {
+                        products = fetched;
+                    } else {
+                        // Seed initial products if DB is empty
+                        initialProducts.forEach(async (p) => {
+                            const { doc, setDoc } = window.FirebaseModule;
+                            await setDoc(doc(firestoreDb, 'artifacts', appId, 'public', 'data', 'products', p.id), p);
+                        });
+                        products = initialProducts;
+                    }
+
+                    updateSyncBadge('Cloud Synced', true);
+                    renderSidebar();
+                    renderProducts();
+                }, (error) => {
+                    console.error('Firestore sync error:', error);
+                    initLocalStorage();
+                });
+
+            } catch (err) {
+                console.error('Firebase setup failed:', err);
+                initLocalStorage();
+            }
+        };
+
+        // Update Cloud/Sync Indicator Badge
+        function updateSyncBadge(label, isCloud) {
+            const badge = document.getElementById('dbStatusBadge');
+            const text = document.getElementById('syncModeText');
+            text.innerText = label;
+
+            if (isCloud) {
+                badge.className = "px-2.5 py-1.5 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-xs font-semibold flex items-center space-x-1.5 transition";
+                badge.innerHTML = `<i class="fa-solid fa-cloud-check text-xs"></i><span id="syncModeText">${label}</span>`;
             } else {
-                btn.classList.remove('bg-slate-800', 'border-slate-700', 'text-slate-200');
-                btn.classList.add('bg-emerald-950/60', 'border-emerald-600', 'text-emerald-400');
-                icon.className = 'fa-solid fa-user text-emerald-400';
+                badge.className = "px-2.5 py-1.5 rounded-xl bg-slate-800 text-amber-400 border border-amber-500/30 text-xs font-semibold flex items-center space-x-1.5 transition";
+                badge.innerHTML = `<i class="fa-solid fa-cloud-slash text-xs"></i><span id="syncModeText">${label}</span>`;
+            }
+        }
+
+        // View Mode Toggle (Customer vs Admin Wholesale)
+        function toggleViewMode() {
+            isAdminView = !isAdminView;
+            const btn = document.getElementById('viewModeBtn');
+            const label = document.getElementById('viewModeLabel');
+            const icon = document.getElementById('viewModeIcon');
+
+            if (isAdminView) {
+                btn.className = "px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center space-x-2 transition";
+                label.innerText = 'Admin View';
+                icon.className = 'fa-solid fa-shield-halved text-amber-400';
+            } else {
+                btn.className = "px-3 py-2 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/60 text-cyan-300 text-xs font-semibold border border-cyan-500/40 flex items-center space-x-2 transition";
                 label.innerText = 'Customer View';
+                icon.className = 'fa-solid fa-eye text-cyan-400';
             }
             renderProducts();
         }
 
-        // Render Navigation Sidebar Filters
+        // Render Sidebar Navigation
         function renderSidebar() {
             // CCTV Brands
             const cctvContainer = document.getElementById('cctvBrandFilters');
-            cctvContainer.innerHTML = cctvBrands.map(brand => `
+            cctvContainer.innerHTML = cctvBrands.map(brand => {
+                const count = products.filter(p => p.cctvBrand === brand).length;
+                return `
                 <button onclick="setFilter('brand', '${brand}')" 
                     id="filter-brand-${brand.replace(/\s+/g, '')}"
                     class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-slate-300 hover:bg-slate-800 transition">
                     <span class="flex items-center space-x-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
                         <span>${brand}</span>
                     </span>
-                    <span class="text-[10px] bg-slate-950 px-2 py-0.5 rounded-full text-slate-400 font-mono">
-                        ${products.filter(p => p.cctvBrand === brand).length}
-                    </span>
-                </button>
-            `).join('');
+                    <span class="text-[10px] bg-slate-950 px-2 py-0.5 rounded-full text-slate-400 font-mono">${count}</span>
+                </button>`;
+            }).join('');
 
-            // Categories
+            // General Computer Hardware Categories
             const generalContainer = document.getElementById('generalCatFilters');
             generalContainer.innerHTML = `
                 <button onclick="setFilter('all', 'all')" id="filter-all-all"
@@ -543,23 +733,24 @@
                     </span>
                     <span class="text-[10px] bg-slate-950 px-2 py-0.5 rounded-full text-slate-400 font-mono">${products.length}</span>
                 </button>
-            ` + generalCategories.map(cat => `
+            ` + generalCategories.map(cat => {
+                const count = products.filter(p => p.category === cat).length;
+                return `
                 <button onclick="setFilter('category', '${cat}')"
                     id="filter-category-${cat.replace(/[^a-zA-Z0-9]/g, '')}"
                     class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-slate-300 hover:bg-slate-800 transition">
                     <span class="flex items-center space-x-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
                         <span>${cat}</span>
                     </span>
-                    <span class="text-[10px] bg-slate-950 px-2 py-0.5 rounded-full text-slate-400 font-mono">
-                        ${products.filter(p => p.category === cat).length}
-                    </span>
-                </button>
-            `).join('');
+                    <span class="text-[10px] bg-slate-950 px-2 py-0.5 rounded-full text-slate-400 font-mono">${count}</span>
+                </button>`;
+            }).join('');
 
             updateActiveFilterUI();
         }
 
+        // Set Filter Type & Value
         function setFilter(type, value) {
             currentFilter = { type, value };
             updateActiveFilterUI();
@@ -569,16 +760,14 @@
         function resetFilters() {
             currentFilter = { type: 'all', value: 'all' };
             searchQuery = '';
-            stockFilter = 'all';
             document.getElementById('searchInput').value = '';
-            document.getElementById('stockFilterSelect').value = 'all';
             updateActiveFilterUI();
             renderProducts();
         }
 
         function updateActiveFilterUI() {
             document.querySelectorAll('#cctvBrandFilters button, #generalCatFilters button').forEach(btn => {
-                btn.classList.remove('bg-sky-600/20', 'text-sky-300', 'border', 'border-sky-500/30', 'font-semibold');
+                btn.classList.remove('bg-amber-500/10', 'text-amber-300', 'border', 'border-amber-500/30', 'font-bold');
             });
 
             const activeId = currentFilter.type === 'all' 
@@ -587,20 +776,18 @@
             
             const activeElem = document.getElementById(activeId);
             if (activeElem) {
-                activeElem.classList.add('bg-sky-600/20', 'text-sky-300', 'border', 'border-sky-500/30', 'font-semibold');
+                activeElem.classList.add('bg-amber-500/10', 'text-amber-300', 'border', 'border-amber-500/30', 'font-bold');
             }
 
             const titleElem = document.getElementById('currentCategoryTitle');
-            const statActive = document.getElementById('statActiveCat');
-
             let filterTitle = 'All Products';
             if (currentFilter.type === 'brand') filterTitle = `CCTV Brand: ${currentFilter.value}`;
             if (currentFilter.type === 'category') filterTitle = `Category: ${currentFilter.value}`;
 
             titleElem.innerHTML = `<span>${filterTitle}</span>`;
-            statActive.innerText = currentFilter.value;
         }
 
+        // Live Search Handling
         function handleSearch(val) {
             searchQuery = val.toLowerCase().trim();
             renderProducts();
@@ -611,26 +798,16 @@
             renderProducts();
         }
 
-        function handleStockFilter(val) {
-            stockFilter = val;
-            renderProducts();
-        }
-
         // Render Product Cards Grid
         function renderProducts() {
             const grid = document.getElementById('productGrid');
             const emptyState = document.getElementById('emptyState');
 
+            // Apply Filters
             let filtered = products.filter(item => {
-                // Category / Brand
                 if (currentFilter.type === 'brand' && item.cctvBrand !== currentFilter.value) return false;
                 if (currentFilter.type === 'category' && item.category !== currentFilter.value) return false;
 
-                // Stock filter
-                if (stockFilter === 'in-stock' && !item.inStock) return false;
-                if (stockFilter === 'out-of-stock' && item.inStock) return false;
-
-                // Search query
                 if (searchQuery) {
                     const matchTitle = item.title.toLowerCase().includes(searchQuery);
                     const matchBrand = (item.cctvBrand || '').toLowerCase().includes(searchQuery);
@@ -641,17 +818,18 @@
                 return true;
             });
 
-            // Sorting
+            // Apply Sorting
             if (currentSort === 'price-low') {
-                filtered.sort((a, b) => a.retailPrice - b.retailPrice);
+                filtered.sort((a, b) => parseFloat(a.retailPrice) - parseFloat(b.retailPrice));
             } else if (currentSort === 'price-high') {
-                filtered.sort((a, b) => b.retailPrice - a.retailPrice);
+                filtered.sort((a, b) => parseFloat(b.retailPrice) - parseFloat(a.retailPrice));
             } else if (currentSort === 'warranty') {
                 filtered.sort((a, b) => (a.warranty || '').localeCompare(b.warranty || ''));
+            } else if (currentSort === 'stock') {
+                filtered.sort((a, b) => (a.stock === 'In Stock' ? -1 : 1));
             }
 
-            document.getElementById('statTotalItems').innerText = products.length;
-            document.getElementById('productCountSub').innerText = `Showing ${filtered.length} of ${products.length} products`;
+            document.getElementById('productCountSub').innerText = `Showing ${filtered.length} of ${products.length} total products in inventory`;
 
             if (filtered.length === 0) {
                 grid.innerHTML = '';
@@ -664,23 +842,22 @@
             emptyState.classList.remove('flex');
 
             grid.innerHTML = filtered.map(item => {
-                const defaultImg = item.category === 'CCTV' 
+                const isCCTV = item.category === 'CCTV Security' || (item.cctvBrand && item.cctvBrand !== 'None');
+                const defaultImg = isCCTV 
                     ? 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=500&q=80'
-                    : 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80';
+                    : 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80';
                 
                 const imgSrc = item.image && item.image.startsWith('http') ? item.image : defaultImg;
+                const margin = (parseFloat(item.retailPrice) - parseFloat(item.wholesalePrice)).toFixed(2);
                 
-                // Calculations
-                const profit = item.retailPrice - item.wholesalePrice;
-                const marginPct = item.retailPrice > 0 ? ((profit / item.retailPrice) * 100).toFixed(1) : 0;
-                
-                const formattedRetail = Number(item.retailPrice).toLocaleString('en-US');
-                const formattedWholesale = Number(item.wholesalePrice).toLocaleString('en-US');
+                let stockBadgeClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
+                if (item.stock === 'Limited Stock') stockBadgeClass = "bg-amber-500/10 text-amber-400 border-amber-500/30";
+                if (item.stock === 'Out of Stock') stockBadgeClass = "bg-red-500/10 text-red-400 border-red-500/30";
 
                 return `
-                <div class="bg-slate-900/90 rounded-2xl border ${item.inStock ? 'border-slate-800 hover:border-slate-700' : 'border-red-900/30 opacity-80'} overflow-hidden flex flex-col justify-between transition-all shadow-lg hover:shadow-sky-500/5 group">
+                <div class="bg-slate-900/90 rounded-2xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl group">
                     <div>
-                        <!-- Image Container with Badges -->
+                        <!-- Card Image Header -->
                         <div class="relative h-44 bg-slate-950 overflow-hidden">
                             <img src="${imgSrc}" alt="${item.title}" 
                                 onerror="this.onerror=null;this.src='${defaultImg}'"
@@ -689,135 +866,116 @@
                             <!-- Category / CCTV Brand Badge -->
                             <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
                                 ${item.cctvBrand && item.cctvBrand !== 'None' ? `
-                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-sky-600 text-white shadow-md">
-                                        <i class="fa-solid fa-camera text-[9px] me-1"></i>${item.cctvBrand}
+                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md">
+                                        <i class="fa-solid fa-video me-1"></i>${item.cctvBrand}
                                     </span>
                                 ` : `
-                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white shadow-md">
+                                    <span class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-cyan-600 text-white shadow-md">
                                         ${item.category}
                                     </span>
                                 `}
                             </div>
 
-                            <!-- In Stock / Out of Stock Badge -->
-                            <div class="absolute top-3 right-3">
-                                ${item.inStock ? `
-                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
-                                        In Stock
-                                    </span>
-                                ` : `
-                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-red-500/20 text-red-400 border border-red-500/40 backdrop-blur-md">
-                                        Out of Stock
-                                    </span>
-                                `}
+                            <!-- Availability Badge -->
+                            <div class="absolute bottom-3 left-3">
+                                <span class="px-2 py-0.5 rounded-md text-[9px] font-bold border ${stockBadgeClass} uppercase tracking-wider backdrop-blur-md">
+                                    ${item.stock || 'In Stock'}
+                                </span>
                             </div>
 
                             <!-- Warranty Badge -->
                             <div class="absolute bottom-3 right-3">
-                                <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-slate-900/90 backdrop-blur-md text-emerald-300 border border-emerald-500/30 shadow-md">
-                                    <i class="fa-solid fa-shield-halved me-1"></i>${item.warranty || 'No Warranty'}
+                                <span class="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/90 backdrop-blur-md text-emerald-400 border border-emerald-500/30">
+                                    <i class="fa-solid fa-shield-halved me-1"></i>${item.warranty || 'N/A'}
                                 </span>
                             </div>
                         </div>
 
-                        <!-- Card Specs Content -->
+                        <!-- Card Body -->
                         <div class="p-4 space-y-2">
                             ${item.model ? `
-                                <div class="text-[10px] font-mono text-sky-400 tracking-wider uppercase">${item.model}</div>
+                                <div class="text-[10px] font-mono text-amber-400 tracking-wider uppercase">${item.model}</div>
                             ` : ''}
-                            
                             <h3 class="font-bold text-slate-100 text-sm leading-snug line-clamp-2">${item.title}</h3>
-                            
-                            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${item.desc || 'No detailed specifications added.'}</p>
+                            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${item.desc || 'No key specifications provided.'}</p>
                         </div>
                     </div>
 
-                    <!-- Pricing & Action Controls -->
-                    <div class="p-4 bg-slate-950/60 border-t border-slate-800/80">
+                    <!-- Card Pricing Footer -->
+                    <div class="p-4 bg-slate-950/60 border-t border-slate-800">
                         <div class="flex items-baseline justify-between mb-3">
-                            <!-- Retail Price -->
+                            <!-- Retail Price (LKR) -->
                             <div>
                                 <span class="text-[10px] text-slate-400 block uppercase font-semibold">Retail Price</span>
-                                <span class="text-lg font-black text-white">Rs. ${formattedRetail}</span>
+                                <span class="text-lg font-extrabold text-white">LKR ${formatLKR(item.retailPrice)}</span>
                             </div>
 
-                            <!-- Admin Wholesale & Margin Info -->
-                            ${isWholesaleMode ? `
+                            <!-- Wholesale Price (Admin Only) -->
+                            ${isAdminView ? `
                                 <div class="text-right">
-                                    <span class="text-[10px] text-emerald-400 block uppercase font-semibold">Wholesale Cost</span>
-                                    <span class="text-sm font-bold text-emerald-300">Rs. ${formattedWholesale}</span>
-                                    <span class="text-[9px] text-slate-400 block font-mono">Margin: ${marginPct}% (+Rs.${Number(profit).toLocaleString('en-US')})</span>
+                                    <span class="text-[10px] text-emerald-400 block uppercase font-semibold">Wholesale</span>
+                                    <span class="text-sm font-bold text-emerald-300">LKR ${formatLKR(item.wholesalePrice)}</span>
+                                    <span class="text-[9px] text-slate-400 block font-mono">Margin: +Rs.${formatLKR(margin)}</span>
                                 </div>
                             ` : ''}
                         </div>
 
-                        <!-- Action Buttons -->
-                        <div class="flex items-center space-x-1.5 pt-2 border-t border-slate-800">
-                            <!-- Share to WhatsApp Button -->
-                            <button onclick="shareProduct('${item.id}')" title="Copy detail message for customer share"
-                                class="py-1.5 px-2.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 text-xs font-medium flex items-center space-x-1 transition">
-                                <i class="fa-brands fa-whatsapp text-sm"></i>
-                                <span class="text-[11px]">Quote</span>
+                        <!-- Action Controls -->
+                        <div class="flex items-center space-x-2 pt-2 border-t border-slate-800">
+                            <!-- WhatsApp Share Button -->
+                            <button onclick="shareWhatsApp('${item.id}')" 
+                                class="flex-1 py-1.5 px-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                                <span>Quote</span>
                             </button>
 
-                            <!-- Edit Button -->
-                            <button onclick="editProduct('${item.id}')" 
-                                class="flex-1 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 flex items-center justify-center space-x-1 transition">
-                                <i class="fa-solid fa-pen-to-square text-[11px]"></i>
-                                <span>Edit</span>
-                            </button>
-
-                            <!-- Delete Button -->
-                            <button onclick="confirmDelete('${item.id}')" 
-                                class="py-1.5 px-2.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 text-xs font-medium transition">
-                                <i class="fa-solid fa-trash-can text-[11px]"></i>
-                            </button>
+                            ${isAdminView ? `
+                                <button onclick="editProduct('${item.id}')" 
+                                    class="py-1.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button onclick="confirmDelete('${item.id}')" 
+                                    class="py-1.5 px-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-medium border border-red-500/20 transition">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            ` : ''}
                         </div>
                     </div>
-                </div>
-            `;
+                </div>`;
             }).join('');
         }
 
-        // WhatsApp / Detail Copy Feature
-        function shareProduct(id) {
+        // Helper Format LKR
+        function formatLKR(val) {
+            const num = parseFloat(val) || 0;
+            return num.toLocaleString('en-LK', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        // WhatsApp Quote Share Generator
+        function shareWhatsApp(id) {
             const item = products.find(p => p.id === id);
             if (!item) return;
 
-            const text = 
-`*C MOS COMPUTERS & TECHNOLOGIES*
-----------------------------------
-*Product:* ${item.title}
+            const text = `*C MOS COMPUTERS & TECHNOLOGIES* 🇱🇰
+📍 New Bus Stand, Anuradhapura
+📞 070 318 2015 / 025 222 8715
+
+📌 *Product Quotation:*
+*Item:* ${item.title}
 *Model:* ${item.model || 'N/A'}
-*Brand:* ${item.cctvBrand !== 'None' ? item.cctvBrand : item.category}
-*Price:* Rs. ${Number(item.retailPrice).toLocaleString('en-US')}
+*Category/Brand:* ${item.cctvBrand && item.cctvBrand !== 'None' ? item.cctvBrand : item.category}
 *Warranty:* ${item.warranty}
-*Status:* ${item.inStock ? 'In Stock' : 'Out of Stock'}
-${item.desc ? `*Specs:* ${item.desc}` : ''}
-----------------------------------
-Contact us for orders & inquiries!`;
+*Availability:* ${item.stock}
 
-            // Clipboard fallback logic
-            const dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
+💰 *Retail Price:* LKR ${formatLKR(item.retailPrice)}
 
-            showToast('Quote details copied! Ready to paste into WhatsApp.');
+Need further assistance or bulk order discounts? Reply to this message!`;
+
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
         }
 
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMsg').innerText = msg;
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-
-        // Form Modal Logic
+        // Modal Handlers
         function openProductModal(editId = null) {
             const modal = document.getElementById('productModal');
             const form = document.getElementById('productForm');
@@ -829,7 +987,7 @@ Contact us for orders & inquiries!`;
             if (editId) {
                 const item = products.find(p => p.id === editId);
                 if (item) {
-                    modalTitle.innerText = 'Edit Product';
+                    modalTitle.innerHTML = `<i class="fa-solid fa-pen"></i> <span>Edit Product</span>`;
                     document.getElementById('prodId').value = item.id;
                     document.getElementById('prodTitle').value = item.title;
                     document.getElementById('prodCategory').value = item.category;
@@ -837,16 +995,16 @@ Contact us for orders & inquiries!`;
                     document.getElementById('prodRetailPrice').value = item.retailPrice;
                     document.getElementById('prodWholesalePrice').value = item.wholesalePrice;
                     document.getElementById('prodWarranty').value = item.warranty;
+                    document.getElementById('prodStock').value = item.stock || 'In Stock';
                     document.getElementById('prodModel').value = item.model || '';
-                    document.getElementById('prodInStock').value = item.inStock ? 'true' : 'false';
                     document.getElementById('prodImage').value = item.image || '';
                     document.getElementById('prodDesc').value = item.desc || '';
                 }
             } else {
-                modalTitle.innerText = 'Add New Product';
+                modalTitle.innerHTML = `<i class="fa-solid fa-box"></i> <span>Add New Inventory Item</span>`;
                 if (currentFilter.type === 'category') document.getElementById('prodCategory').value = currentFilter.value;
                 if (currentFilter.type === 'brand') {
-                    document.getElementById('prodCategory').value = 'CCTV';
+                    document.getElementById('prodCategory').value = 'CCTV Security';
                     document.getElementById('prodCctvBrand').value = currentFilter.value;
                 }
             }
@@ -860,41 +1018,51 @@ Contact us for orders & inquiries!`;
 
         function handleModalCategoryChange(val) {
             const brandSelect = document.getElementById('prodCctvBrand');
-            if (val !== 'CCTV') {
+            if (val !== 'CCTV Security') {
                 brandSelect.value = 'None';
             }
         }
 
-        function saveProduct(e) {
+        // Save Product (Create / Update with Cloud/Local Dual Support)
+        async function saveProduct(e) {
             e.preventDefault();
             
-            const id = document.getElementById('prodId').value;
-            const newProduct = {
-                id: id || Date.now().toString(),
+            const id = document.getElementById('prodId').value || Date.now().toString();
+            const productData = {
+                id,
                 title: document.getElementById('prodTitle').value,
                 category: document.getElementById('prodCategory').value,
                 cctvBrand: document.getElementById('prodCctvBrand').value,
                 retailPrice: parseFloat(document.getElementById('prodRetailPrice').value) || 0,
                 wholesalePrice: parseFloat(document.getElementById('prodWholesalePrice').value) || 0,
                 warranty: document.getElementById('prodWarranty').value,
+                stock: document.getElementById('prodStock').value,
                 model: document.getElementById('prodModel').value,
-                inStock: document.getElementById('prodInStock').value === 'true',
                 image: document.getElementById('prodImage').value,
                 desc: document.getElementById('prodDesc').value
             };
 
-            if (id) {
-                const index = products.findIndex(p => p.id === id);
-                if (index !== -1) products[index] = newProduct;
+            if (firestoreDb && window.FirebaseModule) {
+                // Save to Firebase Firestore Cloud
+                try {
+                    const { doc, setDoc } = window.FirebaseModule;
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'cmos-computers-app';
+                    await setDoc(doc(firestoreDb, 'artifacts', appId, 'public', 'data', 'products', id), productData);
+                } catch(err) {
+                    console.error('Error saving to cloud:', err);
+                }
             } else {
-                products.unshift(newProduct);
+                // Local Storage Update
+                const index = products.findIndex(p => p.id === id);
+                if (index !== -1) products[index] = productData;
+                else products.unshift(productData);
+
+                saveToLocalStorage();
+                renderSidebar();
+                renderProducts();
             }
 
-            saveToStorage();
-            renderSidebar();
-            renderProducts();
             closeProductModal();
-            showToast(id ? 'Product updated successfully!' : 'New product added!');
         }
 
         function editProduct(id) {
@@ -914,13 +1082,62 @@ Contact us for orders & inquiries!`;
             document.getElementById('confirmModal').classList.add('hidden');
         }
 
-        function deleteProduct(id) {
-            products = products.filter(p => p.id !== id);
-            saveToStorage();
-            renderSidebar();
-            renderProducts();
+        async function deleteProduct(id) {
+            if (firestoreDb && window.FirebaseModule) {
+                try {
+                    const { doc, deleteDoc } = window.FirebaseModule;
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'cmos-computers-app';
+                    await deleteDoc(doc(firestoreDb, 'artifacts', appId, 'public', 'data', 'products', id));
+                } catch(err) {
+                    console.error('Error deleting from cloud:', err);
+                }
+            } else {
+                products = products.filter(p => p.id !== id);
+                saveToLocalStorage();
+                renderSidebar();
+                renderProducts();
+            }
             closeConfirmModal();
-            showToast('Product removed from catalog.');
+        }
+
+        // Firebase Settings Modal Actions
+        function openFirebaseSettingsModal() {
+            const saved = localStorage.getItem(FB_CONFIG_KEY);
+            if (saved) {
+                try {
+                    const c = JSON.parse(saved);
+                    document.getElementById('fbApiKey').value = c.apiKey || '';
+                    document.getElementById('fbAuthDomain').value = c.authDomain || '';
+                    document.getElementById('fbProjectId').value = c.projectId || '';
+                } catch(e){}
+            }
+            document.getElementById('firebaseSettingsModal').classList.remove('hidden');
+        }
+
+        function closeFirebaseSettingsModal() {
+            document.getElementById('firebaseSettingsModal').classList.add('hidden');
+        }
+
+        function saveFirebaseConfig() {
+            const config = {
+                apiKey: document.getElementById('fbApiKey').value.trim(),
+                authDomain: document.getElementById('fbAuthDomain').value.trim(),
+                projectId: document.getElementById('fbProjectId').value.trim(),
+            };
+
+            if (config.apiKey && config.projectId) {
+                localStorage.setItem(FB_CONFIG_KEY, JSON.stringify(config));
+                window.initFirebaseSystem(config);
+            }
+            closeFirebaseSettingsModal();
+        }
+
+        function resetFirebaseConfig() {
+            localStorage.removeItem(FB_CONFIG_KEY);
+            if (firebaseUnsubscribe) firebaseUnsubscribe();
+            firestoreDb = null;
+            initLocalStorage();
+            closeFirebaseSettingsModal();
         }
     </script>
 </body>
